@@ -40,7 +40,7 @@ class UpdateCreatePriceIndex implements ShouldQueue
 
         $products = app(ProductRepository::class)
             ->whereIn('id', $this->productIds)
-            ->orderByRaw("FIELD(id, $ids)")
+            ->orderByRaw("CASE WHEN id IN ($ids) THEN array_position(ARRAY[$ids], id) ELSE 999999 END")
             ->get();
 
         app(PriceIndexer::class)->reindexRows($products);

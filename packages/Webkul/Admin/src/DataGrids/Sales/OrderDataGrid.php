@@ -29,7 +29,7 @@ class OrderDataGrid extends DataGrid
             ->leftJoin('order_payment', 'orders.id', '=', 'order_payment.order_id')
             ->select(
                 'orders.id',
-                DB::raw('GROUP_CONCAT('.DB::getTablePrefix().'order_payment.method SEPARATOR "|") as method'),
+                DB::raw('STRING_AGG('.DB::getTablePrefix().'order_payment.method, \'|\') as method'),
                 'orders.increment_id',
                 'orders.base_grand_total',
                 'orders.created_at',

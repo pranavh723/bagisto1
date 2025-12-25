@@ -331,7 +331,7 @@ class ProductDataGrid extends DataGrid
 
         if ($ids) {
             $this->queryBuilder
-                ->orderBy(DB::raw('FIELD('.DB::getTablePrefix().'product_flat.product_id, '.implode(',', $ids).')'));
+                ->orderByRaw('CASE WHEN product_flat.product_id IN (' . implode(',', $ids) . ') THEN array_position(ARRAY[' . implode(',', $ids) . '], product_flat.product_id) ELSE 999999 END');
         }
 
         $total = $results['hits']['total']['value'];

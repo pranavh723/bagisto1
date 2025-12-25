@@ -498,7 +498,7 @@ class ProductRepository extends Repository
                     ->whereNull('product_customizable_options.id');
             }
 
-            $qb->orderBy(DB::raw('FIELD(id, '.implode(',', $indices['ids']).')'));
+            $qb->orderByRaw('CASE WHEN products.id IN (' . implode(',', $indices['ids']) . ') THEN array_position(ARRAY[' . implode(',', $indices['ids']) . '], products.id) ELSE 999999 END');
 
             return $qb;
         });
