@@ -9,7 +9,7 @@
 <head>
     {!! view_render_event('bagisto.admin.layout.head.before') !!}
 
-    <title>{{ $title ?? '' }}</title>
+    <title>{{ $title ?? 'Hamsafar Books Admin' }}</title>
 
     <meta charset="UTF-8">
 

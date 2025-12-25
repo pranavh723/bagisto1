@@ -15,11 +15,11 @@ class AttributeGroupTableSeeder extends Seeder
      */
     public function run($parameters = [])
     {
-        DB::table('attribute_groups')->delete();
+        DB::table('attribute_group_mappings')->delete(); DB::table('attribute_groups')->delete();
 
         DB::table('attribute_group_mappings')->delete();
 
-        DB::table('attribute_groups')->delete();
+        DB::table('attribute_group_mappings')->delete(); DB::table('attribute_groups')->delete();
 
         $defaultLocale = $parameters['default_locale'] ?? config('app.locale');
 
