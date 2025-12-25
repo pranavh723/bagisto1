@@ -1,0 +1,11 @@
+modules = ["php-8.2", "nodejs-20", "web"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+packages = ["mysql80"]
+
+[[ports]]
+localPort = 3306
+externalPort = 80
